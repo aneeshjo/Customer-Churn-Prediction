@@ -2,7 +2,7 @@
 venv/
 .venv/
 
-# Python cache
+# Python
 __pycache__/
 *.py[cod]
 
@@ -21,7 +21,7 @@ artifacts/
 *.pkl
 *.joblib
 
-# Data
+# Processed data
 data/processed/
 
 # IDE
