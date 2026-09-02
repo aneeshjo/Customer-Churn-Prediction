@@ -22,6 +22,16 @@ list_of_files = [
     "src/components/data_transformation.py",
     "src/components/model_trainer.py",
 
+    #Constants
+    "src/constants/__init__.py",
+
+    # Entities
+    "src/entities/__init__.py",
+    "src/entities/config_entity.py",
+
+    #Configuration
+    "src/config/__init__.py",
+    "src/config/configuration.py",
     # Pipeline
     "src/pipeline/__init__.py",
     "src/pipeline/training_pipeline.py",

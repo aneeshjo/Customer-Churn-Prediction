@@ -33,11 +33,10 @@ def save_object(file_path: str, obj: object) -> None:
     """
 
     try:
-        directory = os.path.dirname(file_path)
+        directory = Path(file_path)
+        directory.parent.mkdir(parents=True, exist_ok=True)  # Create parent directories if they don't exist
 
-        if directory:
-            os.makedirs(directory, exist_ok=True)
-
+        
         with open(file_path, "wb") as file_obj:
             pickle.dump(obj, file_obj)
 

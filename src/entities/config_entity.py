@@ -1,0 +1,12 @@
+from dataclasses import dataclass
+from pathlib import Path
+
+@dataclass(frozen=True)
+class DataIngestionConfig:
+    root_dir: Path
+    local_data_file: Path
+    train_data_file: Path
+    test_data_file: Path
+    test_size: float 
+    random_state: int
+    target_column: str
