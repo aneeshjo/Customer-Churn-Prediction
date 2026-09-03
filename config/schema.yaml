@@ -18,5 +18,5 @@ COLUMNS:
   PaperlessBilling: object
   PaymentMethod: object
   MonthlyCharges: float64
-  TotalCharges: float64
+  TotalCharges: object
   Churn: object

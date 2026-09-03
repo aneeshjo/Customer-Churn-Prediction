@@ -10,3 +10,11 @@ class DataIngestionConfig:
     test_size: float 
     random_state: int
     target_column: str
+
+@dataclass(frozen=True)
+class DataValidationConfig:
+    root_dir:Path
+    validation_status_file:Path
+    train_data_file : Path
+    test_data_file : Path
+    required_columns:dict

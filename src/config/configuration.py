@@ -8,7 +8,10 @@ import sys
 from src.utils.common import read_yaml_file, create_directories
 from src.utils.exception import CustomException
 
-from src.entities.config_entity import DataIngestionConfig
+from src.entities.config_entity import (
+    DataIngestionConfig,
+    DataValidationConfig
+)
 
 class ConfigurationManager:
     def __init__(self,
@@ -48,4 +51,24 @@ class ConfigurationManager:
 
         except Exception as e:
             raise CustomException(e, sys)
+
+    def get_data_validation_config(self) ->DataValidationConfig:
+        try:
+            config=self.config["data_validation"]
+            schema=self.schema["COLUMNS"]
+
+            create_directories(
+                [Path(config["root_dir"])]
+            )
+
+            data_validation_config=DataValidationConfig(
+                root_dir=Path(config["root_dir"]),
+                validation_status_file=Path(config["validation_status_file"]),
+                train_data_file=Path(config["train_data_file"]),
+                test_data_file=Path(config["test_data_file"]),
+                required_columns=schema
+            )
+            return data_validation_config
+        except Exception as e:
+            raise CustomException(e,sys)
 
