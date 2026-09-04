@@ -10,7 +10,8 @@ from src.utils.exception import CustomException
 
 from src.entities.config_entity import (
     DataIngestionConfig,
-    DataValidationConfig
+    DataValidationConfig,
+    DataTransformationConfig
 )
 
 class ConfigurationManager:
@@ -71,4 +72,24 @@ class ConfigurationManager:
             return data_validation_config
         except Exception as e:
             raise CustomException(e,sys)
+
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        try:
+            config=self.config["data_transformation"]
+            params=self.params["data_ingestion"]
+            create_directories([Path(config["root_dir"])])
+            data_transformation_config=DataTransformationConfig(
+                root_dir=Path(config["root_dir"]),
+                train_data_file=Path(config["train_data_file"]),
+                test_data_file=Path(config["test_data_file"]),
+                transformed_train_file=Path(config["transformed_train_file"]),
+                transformed_test_file=Path(config["transformed_test_file"]),
+                target_column=params["target_column"],
+                preprocessor_file=Path(config["preprocessor_file"])
+            )
+            return data_transformation_config
+        except Exception as e:
+            raise CustomException(e,sys)
+
+    
 

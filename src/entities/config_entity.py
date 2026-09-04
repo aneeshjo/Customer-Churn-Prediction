@@ -18,3 +18,12 @@ class DataValidationConfig:
     train_data_file : Path
     test_data_file : Path
     required_columns:dict
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path
+    train_data_file: Path
+    test_data_file : Path
+    transformed_train_file:Path
+    transformed_test_file :Path
+    target_column :str
+    preprocessor_file : Path

@@ -11,3 +11,11 @@ data_validation:
   validation_status_file: artifacts/data_validation/status.txt
   train_data_file: artifacts/data_ingestion/train.csv
   test_data_file: artifacts/data_ingestion/test.csv
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  train_data_file: artifacts/data_ingestion/train.csv
+  test_data_file: artifacts/data_ingestion/test.csv
+  transformed_train_file: artifacts/data_transformation/train.csv
+  transformed_test_file: artifacts/data_transformation/test.csv
+  preprocessor_file: artifacts/data_transformation/preprocessor.pkl
