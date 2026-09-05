@@ -11,7 +11,8 @@ from src.utils.exception import CustomException
 from src.entities.config_entity import (
     DataIngestionConfig,
     DataValidationConfig,
-    DataTransformationConfig
+    DataTransformationConfig,
+    ModelTrainingConfig
 )
 
 class ConfigurationManager:
@@ -91,5 +92,30 @@ class ConfigurationManager:
         except Exception as e:
             raise CustomException(e,sys)
 
-    
+    def get_model_training_config(self) -> ModelTrainingConfig:
+        try:
+            config = self.config["model_training"]
+            params=self.params["model_training"]
+
+            create_directories(
+                [Path(config["root_dir"])]
+            )
+
+            model_training_config = ModelTrainingConfig(
+                root_dir=Path(config["root_dir"]),
+                train_data_file=Path(config["train_data_file"]),
+                test_data_file=Path(config["test_data_file"]),
+                model_file=Path(config["model_file"]),
+                random_state=params["random_state"],
+                n_estimators=params["n_estimators"],
+                learning_rate=params["learning_rate"],
+                max_depth=params["max_depth"]
+            )
+
+            return model_training_config
+
+        except Exception as e:
+            raise CustomException(e, sys)
+
+        
 

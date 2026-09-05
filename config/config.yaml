@@ -19,3 +19,9 @@ data_transformation:
   transformed_train_file: artifacts/data_transformation/train.csv
   transformed_test_file: artifacts/data_transformation/test.csv
   preprocessor_file: artifacts/data_transformation/preprocessor.pkl
+
+model_training:
+  root_dir: artifacts/model_training
+  train_data_file: artifacts/data_transformation/train.csv
+  test_data_file: artifacts/data_transformation/test.csv
+  model_file: artifacts/model_training/model.pkl

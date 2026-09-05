@@ -27,3 +27,15 @@ class DataTransformationConfig:
     transformed_test_file :Path
     target_column :str
     preprocessor_file : Path
+
+
+@dataclass(frozen=True)
+class ModelTrainingConfig:
+    root_dir : Path
+    train_data_file: Path
+    test_data_file: Path
+    model_file: Path
+    random_state: int
+    n_estimators: int
+    learning_rate: float
+    max_depth: int
