@@ -15,7 +15,8 @@ from src.entities.config_entity import (
     ModelTrainingConfig,
     ModelEvaluationConfig,
     ModelSelectionConfig,
-    ModelTuningConfig
+    ModelTuningConfig,
+    ThresholdOptimizationConfig
 )
 
 class ConfigurationManager:
@@ -183,6 +184,19 @@ class ConfigurationManager:
             )
 
             return model_tuning_config
+
+        except Exception as e:
+            raise CustomException(e, sys)
+
+    def get_threshold_optimization_config(self) -> ThresholdOptimizationConfig:
+        try:
+            params = self.params["threshold_optimization"]
+
+            threshold_config = ThresholdOptimizationConfig(
+                threshold=params["threshold"]
+            )
+
+            return threshold_config
 
         except Exception as e:
             raise CustomException(e, sys)

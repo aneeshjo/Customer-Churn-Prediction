@@ -25,3 +25,6 @@ model_tuning:
     - 2
     - 3
     - 4
+
+threshold_optimization:
+  threshold: 0.35

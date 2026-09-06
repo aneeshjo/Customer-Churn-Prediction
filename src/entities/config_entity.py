@@ -66,3 +66,8 @@ class ModelTuningConfig:
     n_estimators: list
     learning_rate: list
     max_depth: list
+
+
+@dataclass(frozen=True)
+class ThresholdOptimizationConfig:
+    threshold: float
