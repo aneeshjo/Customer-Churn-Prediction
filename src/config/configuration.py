@@ -12,7 +12,8 @@ from src.entities.config_entity import (
     DataIngestionConfig,
     DataValidationConfig,
     DataTransformationConfig,
-    ModelTrainingConfig
+    ModelTrainingConfig,
+    ModelEvaluationConfig
 )
 
 class ConfigurationManager:
@@ -117,5 +118,25 @@ class ConfigurationManager:
         except Exception as e:
             raise CustomException(e, sys)
 
-        
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        try:
+            config = self.config["model_evaluation"]
+
+            create_directories(
+                [Path(config["root_dir"])]
+            )
+
+            model_evaluation_config = ModelEvaluationConfig(
+                root_dir=Path(config["root_dir"]),
+                model_file=Path(config["model_file"]),
+                test_data_file=Path(config["test_data_file"]),
+                evaluation_file=Path(config["evaluation_file"])
+            )
+
+            return model_evaluation_config
+
+        except Exception as e:
+            raise CustomException(e, sys)
+
+            
 

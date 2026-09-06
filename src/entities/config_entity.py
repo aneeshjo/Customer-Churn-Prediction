@@ -39,3 +39,10 @@ class ModelTrainingConfig:
     n_estimators: int
     learning_rate: float
     max_depth: int
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    model_file: Path
+    test_data_file: Path
+    evaluation_file: Path
