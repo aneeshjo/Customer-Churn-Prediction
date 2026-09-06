@@ -13,7 +13,8 @@ from src.entities.config_entity import (
     DataValidationConfig,
     DataTransformationConfig,
     ModelTrainingConfig,
-    ModelEvaluationConfig
+    ModelEvaluationConfig,
+    ModelSelectionConfig
 )
 
 class ConfigurationManager:
@@ -138,5 +139,26 @@ class ConfigurationManager:
         except Exception as e:
             raise CustomException(e, sys)
 
-            
+    def get_model_selection_config(self) -> ModelSelectionConfig:
+        try:
+            config = self.config["model_selection"]
+
+            create_directories(
+                [Path(config["root_dir"])]
+            )
+
+            model_selection_config = ModelSelectionConfig(
+                root_dir=Path(config["root_dir"]),
+                model_file=Path(config["model_file"]),
+                evaluation_file=Path(config["evaluation_file"]),
+                selected_model_file=Path(config["selected_model_file"]),
+                selection_file=Path(config["selection_file"])
+            )
+
+            return model_selection_config
+
+        except Exception as e:
+            raise CustomException(e, sys)
+
+                
 

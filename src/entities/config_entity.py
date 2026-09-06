@@ -46,3 +46,11 @@ class ModelEvaluationConfig:
     model_file: Path
     test_data_file: Path
     evaluation_file: Path
+
+@dataclass(frozen=True)
+class ModelSelectionConfig:
+    root_dir: Path
+    model_file: Path
+    evaluation_file: Path
+    selected_model_file: Path
+    selection_file: Path
