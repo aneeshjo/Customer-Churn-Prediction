@@ -14,7 +14,8 @@ from src.entities.config_entity import (
     DataTransformationConfig,
     ModelTrainingConfig,
     ModelEvaluationConfig,
-    ModelSelectionConfig
+    ModelSelectionConfig,
+    ModelTuningConfig
 )
 
 class ConfigurationManager:
@@ -160,5 +161,31 @@ class ConfigurationManager:
         except Exception as e:
             raise CustomException(e, sys)
 
-                
+    def get_model_tuning_config(self) -> ModelTuningConfig:
+        try:
+            config = self.config["model_tuning"]
+            params = self.params["model_tuning"]
+
+            create_directories(
+                [Path(config["root_dir"])]
+            )
+
+            model_tuning_config = ModelTuningConfig(
+                root_dir=Path(config["root_dir"]),
+                train_data_file=Path(config["train_data_file"]),
+                best_params_file=Path(config["best_params_file"]),
+                random_state=params["random_state"],
+                cv=params["cv"],
+                scoring=params["scoring"],
+                n_estimators=params["n_estimators"],
+                learning_rate=params["learning_rate"],
+                max_depth=params["max_depth"]
+            )
+
+            return model_tuning_config
+
+        except Exception as e:
+            raise CustomException(e, sys)
+
+                        
 

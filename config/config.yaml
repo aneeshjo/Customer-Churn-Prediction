@@ -38,3 +38,8 @@ model_selection:
   evaluation_file: artifacts/model_evaluation/metrics.json
   selected_model_file: artifacts/model_selection/selected_model.pkl
   selection_file: artifacts/model_selection/selection.json
+
+model_tuning:
+  root_dir: artifacts/model_tuning
+  train_data_file: artifacts/data_transformation/train.csv
+  best_params_file: artifacts/model_tuning/best_params.json

@@ -54,3 +54,15 @@ class ModelSelectionConfig:
     evaluation_file: Path
     selected_model_file: Path
     selection_file: Path
+
+@dataclass(frozen=True)
+class ModelTuningConfig:
+    root_dir: Path
+    train_data_file: Path
+    best_params_file: Path
+    random_state: int
+    cv: int
+    scoring: str
+    n_estimators: list
+    learning_rate: list
+    max_depth: list
