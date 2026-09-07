@@ -17,7 +17,8 @@ from src.entities.config_entity import (
     ModelSelectionConfig,
     ModelTuningConfig,
     ThresholdOptimizationConfig,
-    FeatureImportanceConfig
+    FeatureImportanceConfig,
+    ExplainabilityConfig
 )
 
 class ConfigurationManager:
@@ -225,4 +226,32 @@ class ConfigurationManager:
             raise CustomException(e, sys)
 
                             
+    def get_explainability_config(self) -> ExplainabilityConfig:
+        try:
+            config = self.config["explainability"]
 
+            create_directories(
+                [Path(config["root_dir"])]
+            )
+
+            explainability_config = ExplainabilityConfig(
+                root_dir=Path(config["root_dir"]),
+                model_file=Path(config["model_file"]),
+                preprocessor_file=Path(
+                    config["preprocessor_file"]
+                ),
+                test_data_file=Path(
+                    config["test_data_file"]
+                ),
+                global_shap_file=Path(
+                    config["global_shap_file"]
+                ),
+                local_shap_file=Path(
+                    config["local_shap_file"]
+                )
+            )
+
+            return explainability_config
+
+        except Exception as e:
+            raise CustomException(e, sys)

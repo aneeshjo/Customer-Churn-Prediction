@@ -49,3 +49,11 @@ feature_importance:
   model_file: artifacts/model_selection/selected_model.pkl
   preprocessor_file: artifacts/data_transformation/preprocessor.pkl
   feature_importance_file: artifacts/feature_importance/feature_importance.csv
+
+explainability:
+  root_dir: artifacts/explainability
+  model_file: artifacts/model_selection/selected_model.pkl
+  preprocessor_file: artifacts/data_transformation/preprocessor.pkl
+  test_data_file: artifacts/data_transformation/test.csv
+  global_shap_file: artifacts/explainability/global_shap_importance.csv
+  local_shap_file: artifacts/explainability/local_shap_values.csv

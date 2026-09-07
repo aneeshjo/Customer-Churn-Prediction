@@ -78,3 +78,12 @@ class FeatureImportanceConfig:
     model_file: Path
     preprocessor_file: Path
     feature_importance_file: Path
+
+@dataclass(frozen=True)
+class ExplainabilityConfig:
+    root_dir: Path
+    model_file: Path
+    preprocessor_file: Path
+    test_data_file: Path
+    global_shap_file: Path
+    local_shap_file: Path
