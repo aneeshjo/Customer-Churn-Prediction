@@ -71,3 +71,10 @@ class ModelTuningConfig:
 @dataclass(frozen=True)
 class ThresholdOptimizationConfig:
     threshold: float
+
+@dataclass(frozen=True)
+class FeatureImportanceConfig:
+    root_dir: Path
+    model_file: Path
+    preprocessor_file: Path
+    feature_importance_file: Path

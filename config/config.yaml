@@ -43,3 +43,9 @@ model_tuning:
   root_dir: artifacts/model_tuning
   train_data_file: artifacts/data_transformation/train.csv
   best_params_file: artifacts/model_tuning/best_params.json
+
+feature_importance:
+  root_dir: artifacts/feature_importance
+  model_file: artifacts/model_selection/selected_model.pkl
+  preprocessor_file: artifacts/data_transformation/preprocessor.pkl
+  feature_importance_file: artifacts/feature_importance/feature_importance.csv

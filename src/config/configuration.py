@@ -16,7 +16,8 @@ from src.entities.config_entity import (
     ModelEvaluationConfig,
     ModelSelectionConfig,
     ModelTuningConfig,
-    ThresholdOptimizationConfig
+    ThresholdOptimizationConfig,
+    FeatureImportanceConfig
 )
 
 class ConfigurationManager:
@@ -201,5 +202,27 @@ class ConfigurationManager:
         except Exception as e:
             raise CustomException(e, sys)
 
-                        
+    def get_feature_importance_config(self) -> FeatureImportanceConfig:
+        try:
+            config = self.config["feature_importance"]
+
+            create_directories(
+                [Path(config["root_dir"])]
+            )
+
+            feature_importance_config = FeatureImportanceConfig(
+                root_dir=Path(config["root_dir"]),
+                model_file=Path(config["model_file"]),
+                preprocessor_file=Path(config["preprocessor_file"]),
+                feature_importance_file=Path(
+                    config["feature_importance_file"]
+                )
+            )
+
+            return feature_importance_config
+
+        except Exception as e:
+            raise CustomException(e, sys)
+
+                            
 
