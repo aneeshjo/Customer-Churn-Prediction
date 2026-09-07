@@ -87,3 +87,9 @@ class ExplainabilityConfig:
     test_data_file: Path
     global_shap_file: Path
     local_shap_file: Path
+
+@dataclass(frozen=True)
+class PredictionConfig:
+    root_dir: Path
+    model_file: Path
+    preprocessor_file: Path

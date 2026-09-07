@@ -18,7 +18,8 @@ from src.entities.config_entity import (
     ModelTuningConfig,
     ThresholdOptimizationConfig,
     FeatureImportanceConfig,
-    ExplainabilityConfig
+    ExplainabilityConfig,
+    PredictionConfig
 )
 
 class ConfigurationManager:
@@ -252,6 +253,27 @@ class ConfigurationManager:
             )
 
             return explainability_config
+
+        except Exception as e:
+            raise CustomException(e, sys)
+
+    def get_prediction_config(self) -> PredictionConfig:
+        try:
+            config = self.config["prediction"]
+
+            create_directories(
+                [Path(config["root_dir"])]
+            )
+
+            prediction_config = PredictionConfig(
+                root_dir=Path(config["root_dir"]),
+                model_file=Path(config["model_file"]),
+                preprocessor_file=Path(
+                    config["preprocessor_file"]
+                )
+            )
+
+            return prediction_config
 
         except Exception as e:
             raise CustomException(e, sys)
