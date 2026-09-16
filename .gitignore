@@ -17,9 +17,22 @@ logs/
 *.log
 
 # Model artifacts
-artifacts/
+artifacts/*
+
+# Allow production model artifacts required by the prediction API
+!artifacts/model_selection/
+!artifacts/model_selection/selected_model.pkl
+
+!artifacts/data_transformation/
+!artifacts/data_transformation/preprocessor.pkl
+
+# Ignore other pickle/joblib files
 *.pkl
 *.joblib
+
+# Re-include the two production artifacts
+!artifacts/model_selection/selected_model.pkl
+!artifacts/data_transformation/preprocessor.pkl
 
 # Processed data
 data/processed/
